@@ -1,4 +1,4 @@
-package assignment7;
+package Assignment7;
 
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.*;
@@ -12,6 +12,7 @@ import java.util.Locale;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Task5 {
+
     WebDriver driver;
     Faker faker = new Faker(new Locale("en-GB"));
 
@@ -24,7 +25,7 @@ public class Task5 {
 
     @Test
     void dynamicListTest() throws InterruptedException {
-        driver.get("http://webdriveruniversity.com/To-Do-List/index.html");
+        driver.get("https://webdriveruniversity.com/To-Do-List/index.html");
 
         for (int i = 0; i < 5; i++) {
             String task = faker.job().title();

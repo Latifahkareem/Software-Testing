@@ -1,4 +1,4 @@
-package assignment7;
+package Assignment7;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;

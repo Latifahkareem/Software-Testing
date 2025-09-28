@@ -1,4 +1,4 @@
-package assignment7;
+package Assignment7;
 
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.*;
