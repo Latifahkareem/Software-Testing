@@ -1,5 +1,5 @@
 package Assignment11;
-// إذا كان في نفس package
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
