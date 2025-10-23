@@ -1,0 +1,174 @@
+{
+  "info": {
+    "name": "Contact Management API Homework",
+    "_postman_id": "contact-management-hw-001",
+    "description": "Task 1: Test complete user and contact management workflow",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"testuser{{randomInt}}@example.com\",\n  \"password\": \"Password123\"\n}"
+        },
+        "url": {
+          "raw": "https://thinking-tester-contact-list.herokuapp.com/users",
+          "protocol": "https",
+          "host": [
+            "thinking-tester-contact-list",
+            "herokuapp",
+            "com"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = pm.response.json();",
+              "pm.collectionVariables.set('userId', jsonData.id);",
+              "pm.test('User created successfully', function() { pm.response.to.have.status(201); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Add Contact",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"{{userId}}\",\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"1234567890\"\n}"
+        },
+        "url": {
+          "raw": "https://thinking-tester-contact-list.herokuapp.com/contacts",
+          "protocol": "https",
+          "host": [
+            "thinking-tester-contact-list",
+            "herokuapp",
+            "com"
+          ],
+          "path": [
+            "contacts"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = pm.response.json();",
+              "pm.collectionVariables.set('contactId', jsonData.id);",
+              "pm.test('Contact added successfully', function() { pm.response.to.have.status(201); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Delete Contact",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://thinking-tester-contact-list.herokuapp.com/contacts/{{contactId}}",
+          "protocol": "https",
+          "host": [
+            "thinking-tester-contact-list",
+            "herokuapp",
+            "com"
+          ],
+          "path": [
+            "contacts",
+            "{{contactId}}"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Contact deleted successfully', function() { pm.response.to.have.status(204); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Delete User",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://thinking-tester-contact-list.herokuapp.com/users/{{userId}}",
+          "protocol": "https",
+          "host": [
+            "thinking-tester-contact-list",
+            "herokuapp",
+            "com"
+          ],
+          "path": [
+            "users",
+            "{{userId}}"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('User deleted successfully', function() { pm.response.to.have.status(204); });"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "userId",
+      "value": ""
+    },
+    {
+      "key": "contactId",
+      "value": ""
+    },
+    {
+      "key": "randomInt",
+      "value": "1234"
+    }
+  ]
+}

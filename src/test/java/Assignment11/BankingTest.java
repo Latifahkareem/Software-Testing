@@ -25,7 +25,7 @@ public class BankingTest {
     @Test
     public void bankingOperations() {
         // 1. Manager login
-       pages.ManagerLoginPage managerPage = new pages.ManagerLoginPage(driver);
+        Assignment11.ManagerLoginPage managerPage = new Assignment11.ManagerLoginPage(driver);
         managerPage.loginAsManager();
 
         CustomerManagementPage customerMgmt = new CustomerManagementPage(driver);
@@ -63,7 +63,7 @@ public class BankingTest {
         Assert.assertEquals(txnPage.getBalance(), 0);
 
         // 5. Delete all customers
-        pages.ManagerLoginPage managerPage2 = new pages.ManagerLoginPage(driver);
+        Assignment11.ManagerLoginPage managerPage2 = new Assignment11.ManagerLoginPage(driver);
         managerPage2.loginAsManager();
         customerMgmt.deleteAllCustomers();
     }

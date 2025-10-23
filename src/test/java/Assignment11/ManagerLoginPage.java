@@ -1,4 +1,4 @@
-package pages;
+package Assignment11;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
