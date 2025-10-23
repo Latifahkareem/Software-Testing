@@ -22,12 +22,11 @@ public class Task4 {
 
     @Test
     public void positiveLoginTest() {
-        // إدخال بيانات صحيحة
+
         driver.findElement(By.id("username")).sendKeys("admin");
         driver.findElement(By.id("password")).sendKeys("123");
         driver.findElement(By.id("loginButton")).click();
 
-        // Hard Assertion 1: تحقق من URL
         String expectedUrl = "https://claruswaysda.github.io/signIn.html";
         String actualUrl = driver.getCurrentUrl();
         Assert.assertEquals(actualUrl, expectedUrl, "ERROR: after login URL not true!");
